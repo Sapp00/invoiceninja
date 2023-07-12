@@ -1294,7 +1294,7 @@ return new class extends Migration {
             $table->text('transaction_reference');
             $table->boolean('should_be_invoiced')->default(false);
             $table->boolean('invoice_documents')->default();
-            $table->string('transaction_id')->nullable();
+            $table->unsignedBigInteger('transaction_id')->nullable();
 
             $table->string('custom_value1')->nullable();
             $table->string('custom_value2')->nullable();

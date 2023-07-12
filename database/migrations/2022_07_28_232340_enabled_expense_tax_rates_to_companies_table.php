@@ -14,11 +14,11 @@ return new class extends Migration {
     public function up()
     {
         Schema::table('companies', function (Blueprint $table) {
-            $table->boolean('enabled_expense_tax_rates')->default(0);
+            $table->unsignedInteger('enabled_expense_tax_rates')->default(0);
         });
 
         Company::query()->where('enabled_item_tax_rates', true)->cursor()->each(function ($company) {
-            $company->enabled_expense_tax_rates = true;
+            $company->enabled_expense_tax_rates = 0;
             $company->save();
         });
     }
